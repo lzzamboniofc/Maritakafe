@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+  <defs>
+  <filter id="grao" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="ruido"/>
+    <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.16 0" result="pontos"/>
+    <feComposite in="pontos" in2="SourceGraphic" operator="in" result="grao"/>
+    <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="grao"/></feMerge>
+  </filter>
+  <pattern id="toalha" width="120" height="120" patternUnits="userSpaceOnUse">
+    <rect width="120" height="120" fill="#FBFAF4"/>
+    <rect width="60" height="120" fill="#C9412F" opacity="0.55"/>
+    <rect width="120" height="60" fill="#C9412F" opacity="0.55"/>
+  </pattern></defs>
+  <g filter="url(#grao)"><rect width="1200" height="1500" fill="url(#toalha)"/><rect x="0" y="0" width="1200" height="1500" fill="#1E3B2C" opacity="0.06"/><g transform="translate(420 560)"><circle r="230" fill="#FBFAF4"/><circle r="186" fill="#EFF2E6"/><circle r="150" fill="#FBFAF4"/><circle r="120" fill="#5A3A26"/><circle r="120" fill="none" stroke="#B07A4C" stroke-width="10" opacity="0.6"/><ellipse cx="-30" cy="-30" rx="50" ry="22" fill="#B07A4C" opacity="0.5" transform="rotate(-25)"/><path d="M140 60 C 230 70, 240 160, 150 150" stroke="#FBFAF4" stroke-width="30" fill="none"/></g><g transform="translate(860 1020) rotate(-18)"><ellipse rx="250" ry="200" fill="#FBFAF4"/>
+    <path d="M-170 20 C -150 -90, 150 -110, 180 10 C 120 60, -110 70, -170 20 Z" fill="#E8962E"/>
+    <path d="M-120 0 C -100 -60, -40 -80, -20 -40 M -20 -40 C 10 -90, 70 -80, 80 -30 M 80 -30 C 110 -60, 150 -30, 140 0" stroke="#8A5A36" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M-160 22 C -100 50, 110 50, 176 14" stroke="#8A5A36" stroke-width="8" fill="none" opacity="0.6"/></g><g transform="translate(900 380)"><circle r="120" fill="#DCE8DA" opacity="0.9"/><circle r="100" fill="#E8962E"/><circle r="100" fill="none" stroke="#FBFAF4" stroke-width="10" opacity="0.6"/><circle cx="-30" cy="-30" r="22" fill="#FBFAF4" opacity="0.35"/></g><g transform="translate(300 1180) rotate(30)"><rect x="-14" y="-220" width="28" height="440" rx="14" fill="#5A3A26"/><rect x="-10" y="-220" width="6" height="440" fill="#B07A4C" opacity="0.6"/></g><g transform="translate(180 260)"><g transform="translate(0.0 0.0) rotate(20.0)"><path d="M0 0 C 56 -51.2, 128 -44.800000000000004, 160 0 C 128 44.800000000000004, 56 51.2, 0 0 Z" fill="#4F7F3E"/><path d="M8 0 L 144 0" stroke="#B7D36B" stroke-width="4" fill="none" stroke-linecap="round"/></g><g transform="translate(10.0 10.0) rotate(80.0)"><path d="M0 0 C 45.5 -41.6, 104 -36.400000000000006, 130 0 C 104 36.400000000000006, 45.5 41.6, 0 0 Z" fill="#2F5A3F"/><path d="M6.5 0 L 117 0" stroke="#4F7F3E" stroke-width="3.25" fill="none" stroke-linecap="round"/></g><g transform="translate(0.0 0.0) rotate(-40.0)"><path d="M0 0 C 42 -38.4, 96 -33.6, 120 0 C 96 33.6, 42 38.4, 0 0 Z" fill="#7DB443"/><path d="M6 0 L 108 0" stroke="#4F7F3E" stroke-width="3" fill="none" stroke-linecap="round"/></g></g></g>
+</svg>
