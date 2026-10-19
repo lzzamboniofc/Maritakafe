@@ -2,7 +2,7 @@
   "name": "cafe-maritaka-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Site do Café Maritaka, Joaquim Egídio, Campinas (SP). Gerado em HTML estático para o GitHub Pages.",
+  "description": "Site do Maritakafé, Joaquim Egídio, Campinas (SP). Gerado em HTML estático para o GitHub Pages.",
   "type": "module",
   "engines": { "node": ">=18" },
   "scripts": {

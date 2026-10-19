@@ -2,7 +2,7 @@
 
 ## Imagens atuais (provisórias)
 
-Todas as imagens do site nesta versão são ilustrações criadas para este projeto (`scripts/ilustracoes.mjs`). Não são fotos do Café Maritaka e não mostram o ambiente, a equipe ou os pratos reais. Devem ser substituídas por fotos do café.
+Todas as imagens do site nesta versão são ilustrações criadas para este projeto (`scripts/ilustracoes.mjs`). Não são fotos do Maritakafé e não mostram o ambiente, a equipe ou os pratos reais. Devem ser substituídas por fotos do café.
 
 | Arquivo | Uso | Origem |
 | --- | --- | --- |

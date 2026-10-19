@@ -1,6 +1,6 @@
-# Café Maritaka — site
+# Maritakafé — site
 
-Site do Café Maritaka (Joaquim Egídio, Campinas – SP). HTML estático gerado com Node.js, sem dependências, publicado pelo GitHub Pages a partir da branch `main`, pasta raiz.
+Site do Maritakafé (Joaquim Egídio, Campinas – SP). HTML estático gerado com Node.js, sem dependências, publicado pelo GitHub Pages a partir da branch `main`, pasta raiz.
 
 ## Como editar
 

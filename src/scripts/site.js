@@ -85,7 +85,7 @@
     mapa.querySelector('[data-carregar-mapa]').addEventListener('click', () => {
       const quadro = document.createElement('iframe');
       quadro.src = `https://www.google.com/maps?q=${encodeURIComponent(mapa.dataset.busca)}&output=embed`;
-      quadro.title = 'Mapa com a localização do Café Maritaka';
+      quadro.title = 'Mapa com a localização do Maritakafé';
       quadro.loading = 'lazy';
       quadro.referrerPolicy = 'no-referrer-when-downgrade';
       mapa.querySelector('.visite__mapa-capa').remove();

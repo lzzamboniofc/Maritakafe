@@ -75,7 +75,7 @@ ${indexar && !demonstracao ? '' : '<meta name="robots" content="noindex">'}
 <meta name="theme-color" content="#1E3B2C">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Café Maritaka">
+<meta property="og:site_name" content="Maritakafé">
 <meta property="og:title" content="${esc(titulo)}">
 <meta property="og:description" content="${esc(descricao)}">
 <meta property="og:url" content="${canonica}">
@@ -120,7 +120,7 @@ function paginaSimples({ arquivo, titulo, descricao, conteudo, indexar = true })
 ${cabeca({ titulo, descricao, canonica: config.site.url + arquivo, indexar })}
 </head>
 <body class="pagina-simples">
-<header class="topo topo--solido"><div class="topo__barra"><a class="topo__marca" href="./">${marca}<span>Café Maritaka</span></a></div></header>
+<header class="topo topo--solido"><div class="topo__barra"><a class="topo__marca" href="./">${marca}<span>Maritakafé</span></a></div></header>
 <main class="texto-corrido">${conteudo}</main>
 </body>
 </html>
@@ -133,7 +133,7 @@ gravar(
 <html lang="pt-BR">
 <head>
 <script>(function(){var p=location.pathname.split('/')[1];var b=location.hostname.endsWith('github.io')&&p?'/'+p+'/':'/';var e=document.createElement('base');e.href=b;document.head.appendChild(e);})();</script>
-${cabeca({ titulo: 'Página não encontrada | Café Maritaka', descricao: 'Este endereço não existe no site do Café Maritaka.', canonica: config.site.url + '404.html', indexar: false })}
+${cabeca({ titulo: 'Página não encontrada | Maritakafé', descricao: 'Este endereço não existe no site do Maritakafé.', canonica: config.site.url + '404.html', indexar: false })}
 
 </head>
 <body class="pagina-erro">
@@ -154,10 +154,10 @@ gravar(
   'politica-de-privacidade.html',
   paginaSimples({
     arquivo: 'politica-de-privacidade.html',
-    titulo: 'Política de privacidade | Café Maritaka',
-    descricao: 'Como o site do Café Maritaka trata dados de quem visita.',
+    titulo: 'Política de privacidade | Maritakafé',
+    descricao: 'Como o site do Maritakafé trata dados de quem visita.',
     conteudo: `<h1>Política de privacidade</h1>
-<p>Este site é uma página de apresentação do Café Maritaka. Ele não tem formulários, não pede cadastro e não usa cookies de publicidade ou de análise.</p>
+<p>Este site é uma página de apresentação do Maritakafé. Ele não tem formulários, não pede cadastro e não usa cookies de publicidade ou de análise.</p>
 <h2>O que acontece quando você usa o site</h2>
 <p>A hospedagem (GitHub Pages) registra dados técnicos de acesso, como endereço IP e navegador, para segurança e funcionamento do serviço. O café não recebe nem guarda esses dados.</p>
 <p>O mapa do Google só é carregado se você clicar em “Mostrar mapa”. A partir daí, o Google pode usar cookies próprios, conforme a política de privacidade dele.</p>

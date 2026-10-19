@@ -1,4 +1,4 @@
-// Configuração central do site do Café Maritaka.
+// Configuração central do site do Maritakafé.
 // Tudo o que aparece para o visitante sai daqui. Itens com `confirmado: false`
 // aparecem com o selo "A confirmar" no modo demonstração e somem no modo público.
 // Depois de editar, rode `npm run build` e `npm run pendencias`.
@@ -8,7 +8,7 @@ export const modo = 'demonstracao'; // 'demonstracao' | 'publico'
 export const site = {
   url: 'https://lzzamboniofc.github.io/Maritakafe/',
   idioma: 'pt-BR',
-  titulo: 'Café Maritaka | Café da manhã, brunch e almoço em Joaquim Egídio, Campinas',
+  titulo: 'Maritakafé | Café da manhã, brunch e almoço em Joaquim Egídio, Campinas',
   descricao:
     'Café da manhã, brunch e almoço no jardim, entre árvores antigas e bambus, na rua principal de Joaquim Egídio, em Campinas. Pode levar o pet.',
   imagemCompartilhamento: 'assets/img/compartilhar.png',
@@ -16,7 +16,7 @@ export const site = {
 };
 
 export const negocio = {
-  nome: { valor: 'Café Maritaka', confirmado: true, fonte: 'Receita Federal (CNPJ 47.519.881/0001-15) e imprensa local' },
+  nome: { valor: 'Maritakafé', confirmado: true, fonte: 'Informado pelo cliente (perfil @maritakafe)' },
   segmento: 'Cafeteria',
   bairro: 'Joaquim Egídio',
   cidade: 'Campinas',
@@ -56,7 +56,7 @@ export const contato = {
   },
   email: { valor: null, confirmado: false },
   mapa: {
-    busca: 'Café Maritaka, R. Dr. Heitor Penteado, 1580, Joaquim Egídio, Campinas - SP',
+    busca: 'R. Dr. Heitor Penteado, 1580 - Joaquim Egídio, Campinas - SP, 13108-002',
     confirmado: true,
   },
 };
@@ -65,7 +65,7 @@ export const contato = {
 // o modo público usa o Direct do Instagram automaticamente.
 export const canal = {
   preferido: 'whatsapp',
-  mensagemWhatsapp: 'Olá! Vi o site do Café Maritaka e queria uma informação.',
+  mensagemWhatsapp: 'Olá! Vi o site do Maritakafé e queria uma informação.',
 };
 
 export const horarios = {
@@ -83,11 +83,11 @@ export const historia = {
   confirmado: false,
   fonte: 'Matéria "Os Melhores da Gastronomia" (março de 2022). Confirmar nomes e datas com o café.',
   paragrafos: [
-    'O Maritaka abriu em frente à antiga sede da fazenda de café de Joaquim Egídio. A ideia de Liliana Barretto era simples: mesas no jardim, café da manhã sem pressa e espaço para quem chega com o cachorro.',
+    'O Maritakafé abriu em frente à antiga sede da fazenda de café de Joaquim Egídio. A ideia de Liliana Barretto era simples: mesas no jardim, café da manhã sem pressa e espaço para quem chega com o cachorro.',
     'Desde 2020 a cozinha está com o chef Pedro Patrone Barretto, sobrinho de Liliana, que frequenta o café desde criança. Vieram pratos novos e outros métodos de preparo de café, e o jardim continuou do mesmo jeito.',
   ],
   textoNeutro: [
-    'O Café Maritaka fica na rua principal de Joaquim Egídio, com mesas espalhadas pelo jardim e sombra das árvores e dos bambus.',
+    'O Maritakafé fica na rua principal de Joaquim Egídio, com mesas espalhadas pelo jardim e sombra das árvores e dos bambus.',
   ],
 };
 

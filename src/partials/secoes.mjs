@@ -11,7 +11,7 @@ export function cabecalho(navegacao) {
   const links = navegacao.map((n) => `<li><a href="#${n.id}">${n.rotulo}</a></li>`).join('');
   return `<header class="topo" data-topo>
   <div class="topo__barra">
-    <a class="topo__marca" href="#inicio" aria-label="Café Maritaka, voltar ao início">${marca}<span>Café Maritaka</span></a>
+    <a class="topo__marca" href="#inicio" aria-label="Maritakafé, voltar ao início">${marca}<span>Maritakafé</span></a>
     <nav class="topo__nav" id="menu" aria-label="Seções do site">
       <ul>${links}</ul>
       <a class="botao botao--principal topo__acao" href="${canal.href}" target="_blank" rel="noopener">${icone[canal.tipo]}<span>${canal.curto}</span></a>
@@ -208,7 +208,7 @@ export function rodape(navegacao) {
   const { contato } = config;
   return `<footer class="rodape">
   <div class="rodape__marca">
-    <a class="topo__marca" href="#inicio">${marca}<span>Café Maritaka</span></a>
+    <a class="topo__marca" href="#inicio">${marca}<span>Maritakafé</span></a>
     <p>Café da manhã, brunch e almoço no jardim, em Joaquim Egídio, Campinas.</p>
   </div>
   <nav class="rodape__nav" aria-label="Rodapé">
