@@ -1,14 +1,13 @@
 {
-  "name": "cafe-maritaka-site",
+  "name": "maritakafe-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Site do Maritakafé, Joaquim Egídio, Campinas (SP). Gerado em HTML estático para o GitHub Pages.",
+  "description": "Site da MaritaKafé, cafeteria em Itu (SP). HTML estático para o GitHub Pages.",
   "type": "module",
   "engines": { "node": ">=18" },
   "scripts": {
     "build": "node src/build.mjs",
     "pendencias": "node scripts/pendencias.mjs",
-    "ilustracoes": "node scripts/ilustracoes.mjs",
     "dev": "node scripts/servidor.mjs"
   }
 }

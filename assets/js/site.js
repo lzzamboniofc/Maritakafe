@@ -80,12 +80,21 @@
     });
   }
 
+  const listaEventos = document.querySelector('[data-eventos]');
+  if (listaEventos) {
+    const hoje = new Date();
+    const dia = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
+    const eventos = [...listaEventos.querySelectorAll('[data-ate]')];
+    eventos.forEach((e) => { if (e.dataset.ate && e.dataset.ate < dia) e.remove(); });
+    if (!listaEventos.querySelector('[data-ate]')) listaEventos.querySelector('.eventos__vazio').hidden = false;
+  }
+
   const mapa = document.querySelector('[data-mapa]');
   if (mapa) {
     mapa.querySelector('[data-carregar-mapa]').addEventListener('click', () => {
       const quadro = document.createElement('iframe');
       quadro.src = `https://www.google.com/maps?q=${encodeURIComponent(mapa.dataset.busca)}&output=embed`;
-      quadro.title = 'Mapa com a localização do Maritakafé';
+      quadro.title = 'Mapa com a localização da MaritaKafé';
       quadro.loading = 'lazy';
       quadro.referrerPolicy = 'no-referrer-when-downgrade';
       mapa.querySelector('.visite__mapa-capa').remove();

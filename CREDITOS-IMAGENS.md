@@ -1,20 +1,17 @@
 # Créditos das imagens
 
-## Imagens atuais (provisórias)
-
-Todas as imagens do site nesta versão são ilustrações criadas para este projeto (`scripts/ilustracoes.mjs`). Não são fotos do Maritakafé e não mostram o ambiente, a equipe ou os pratos reais. Devem ser substituídas por fotos do café.
+Todas as fotos e o logotipo são da MaritaKafé, recortados de um print do perfil [@maritakafe](https://www.instagram.com/maritakafe/) enviado pelo cliente. Estão em baixa resolução (cerca de 350 px) e devem ser trocados pelos arquivos originais.
 
 | Arquivo | Uso | Origem |
 | --- | --- | --- |
-| `assets/img/jardim-*.webp` | Abertura e galeria | Ilustração própria |
-| `assets/img/mesa-*.webp` | A casa | Ilustração própria |
-| `assets/img/chocotaka-*.webp` | Cardápio e galeria | Ilustração própria |
-| `assets/img/maritaca-*.webp` | O jardim, galeria e página 404 | Ilustração própria |
-| `assets/img/bambus-*.webp` | O jardim, galeria e fundo do mapa | Ilustração própria |
-| `assets/img/paes-*.webp` | Galeria | Ilustração própria |
-| `assets/img/sucos-*.webp` | Galeria | Ilustração própria |
-| `assets/img/compartilhar.png` | Imagem de compartilhamento (Open Graph) | Composição da ilustração do jardim |
+| `assets/img/logo.webp` | Topo do site | Foto de perfil do Instagram |
+| `assets/img/ave.webp` | Rodapé, 404, ícones | Capa do destaque do Instagram |
+| `assets/img/tosta-morangos.webp` | Abertura e cardápio | Post do Instagram |
+| `assets/img/dia-do-cafe.webp` | Abertura e eventos | Post “Dia do Café” |
+| `assets/img/combo-arara.webp` | Cardápio | Post “O que vem no Combo Arara?” |
+| `assets/img/equipe.webp` | A casa | Post “Por que Maritakafé?” |
+| `assets/img/oficina-bandtape.webp` | Eventos | Post “Oficina de bandtape” |
+| `assets/img/cafe-sospeso.webp` | Café sospeso | Vídeo “café sospenso” |
+| `assets/img/compartilhar.png`, `apple-touch-icon.png`, `favicon-32.png`, `icone-192.png` | Compartilhamento e ícones | Composição com as imagens acima |
 
-## Fotos de banco de imagem
-
-Nenhuma até agora. Ao usar uma, registre aqui: arquivo, autor, link original e licença.
+Nenhuma foto de banco de imagens é usada. Se for usar, registre aqui: arquivo, autor, link e licença.

@@ -29,14 +29,15 @@ gravar('assets/js/site.js', ler('src/scripts/site.js'));
 const secoes = [
   { id: 'casa', rotulo: 'A casa', html: s.casa() },
   { id: 'cardapio', rotulo: 'Cardápio', html: s.cardapio() },
-  { id: 'jardim', rotulo: 'O jardim', html: s.jardim() },
+  { id: 'eventos', rotulo: 'Eventos', html: s.eventos() },
+  { id: 'sospeso', rotulo: 'Café sospeso', html: s.sospeso() },
   { id: 'fotos', rotulo: 'Fotos', html: s.fotos() },
   { id: 'avaliacoes', rotulo: 'Avaliações', html: s.avaliacoes() },
   { id: 'duvidas', rotulo: 'Dúvidas', html: s.duvidas() },
   { id: 'visite', rotulo: 'Visite', html: s.visite() },
 ];
 const ativas = secoes.filter((x) => x.html);
-const navegacao = ativas.filter((x) => x.id !== 'casa');
+const navegacao = ativas.filter((x) => !['casa', 'avaliacoes', 'duvidas'].includes(x.id));
 
 function dadosEstruturados() {
   const { contato, negocio, horarios } = config;
@@ -44,25 +45,34 @@ function dadosEstruturados() {
     '@context': 'https://schema.org',
     '@type': 'CafeOrCoffeeShop',
     name: negocio.nome.valor,
+    description: negocio.bio,
     url: config.site.url,
     image: config.site.url + config.site.imagemCompartilhamento,
-    servesCuisine: ['Café da manhã', 'Brunch', 'Cafeteria'],
-    sameAs: [contato.instagram.url],
-  };
-  if (contato.endereco.confirmado) {
-    dados.address = {
+    logo: config.site.url + negocio.logotipo.arquivo,
+    sameAs: [contato.instagram.url, contato.linktree.url],
+    address: {
       '@type': 'PostalAddress',
       streetAddress: contato.endereco.rua,
-      addressLocality: `${contato.endereco.bairro}, ${negocio.cidade}`,
+      addressLocality: negocio.cidade,
       addressRegion: negocio.estado,
-      postalCode: contato.endereco.cep,
       addressCountry: 'BR',
-    };
-    dados.hasMap = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contato.mapa.busca)}`;
-  }
+      ...(contato.bairroCep.confirmado ? { postalCode: contato.bairroCep.cep } : {}),
+    },
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contato.mapa.busca)}`,
+  };
   if (contato.whatsapp.confirmado) dados.telephone = `+${contato.whatsapp.valor}`;
   if (horarios.confirmado && horarios.especificacao) dados.openingHoursSpecification = horarios.especificacao;
-  return JSON.stringify(dados).replaceAll('<', '\\u003c');
+  const eventos = config.eventos.filter((e) => e.confirmado && e.data >= new Date().toISOString().slice(0, 10));
+  const grafo = [dados, ...eventos.map((e) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: `${e.titulo}${e.detalhe ? ` (${e.detalhe.toLowerCase()})` : ''} na ${negocio.nome.valor}`,
+    startDate: e.data,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: { '@type': 'Place', name: negocio.nome.valor, address: dados.address },
+    url: e.link,
+  }))];
+  return JSON.stringify(grafo.length === 1 ? dados : grafo).replaceAll('<', '\\u003c');
 }
 
 function cabeca({ titulo, descricao, canonica, indexar = true }) {
@@ -72,10 +82,10 @@ function cabeca({ titulo, descricao, canonica, indexar = true }) {
 <meta name="description" content="${esc(descricao)}">
 ${indexar && !demonstracao ? '' : '<meta name="robots" content="noindex">'}
 <link rel="canonical" href="${canonica}">
-<meta name="theme-color" content="#1E3B2C">
+<meta name="theme-color" content="#E9DFCB">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Maritakafé">
+<meta property="og:site_name" content="MaritaKafé">
 <meta property="og:title" content="${esc(titulo)}">
 <meta property="og:description" content="${esc(descricao)}">
 <meta property="og:url" content="${canonica}">
@@ -83,7 +93,6 @@ ${indexar && !demonstracao ? '' : '<meta name="robots" content="noindex">'}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/lora-latin.woff" as="font" type="font/woff" crossorigin>
@@ -94,14 +103,14 @@ const index = `<!doctype html>
 <html lang="pt-BR">
 <head>
 ${cabeca({ titulo: config.site.titulo, descricao: config.site.descricao, canonica: config.site.url })}
-<link rel="preload" as="image" href="${config.imagens.hero.arquivo}-1200.webp" imagesrcset="${config.imagens.hero.larguras.map((l) => `${config.imagens.hero.arquivo}-${l}.webp ${l}w`).join(', ')}" imagesizes="100vw">
+<link rel="preload" as="image" href="${config.imagens.tosta.arquivo}">
 <script type="application/ld+json">${dadosEstruturados()}</script>
 </head>
 <body class="${demonstracao ? 'modo-demo' : 'modo-publico'}">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 ${s.cabecalho(navegacao)}
 <main id="conteudo">
-${s.hero()}
+${s.abertura()}
 ${ativas.map((x) => x.html).join('\n')}
 </main>
 ${s.rodape(navegacao)}
@@ -120,7 +129,7 @@ function paginaSimples({ arquivo, titulo, descricao, conteudo, indexar = true })
 ${cabeca({ titulo, descricao, canonica: config.site.url + arquivo, indexar })}
 </head>
 <body class="pagina-simples">
-<header class="topo topo--solido"><div class="topo__barra"><a class="topo__marca" href="./">${marca}<span>Maritakafé</span></a></div></header>
+<header class="topo topo--solido"><div class="topo__barra"><a class="topo__marca" href="./">${marca}<span>MaritaKafé</span></a></div></header>
 <main class="texto-corrido">${conteudo}</main>
 </body>
 </html>
@@ -133,15 +142,15 @@ gravar(
 <html lang="pt-BR">
 <head>
 <script>(function(){var p=location.pathname.split('/')[1];var b=location.hostname.endsWith('github.io')&&p?'/'+p+'/':'/';var e=document.createElement('base');e.href=b;document.head.appendChild(e);})();</script>
-${cabeca({ titulo: 'Página não encontrada | Maritakafé', descricao: 'Este endereço não existe no site do Maritakafé.', canonica: config.site.url + '404.html', indexar: false })}
+${cabeca({ titulo: 'Página não encontrada | MaritaKafé', descricao: 'Este endereço não existe no site da MaritaKafé.', canonica: config.site.url + '404.html', indexar: false })}
 
 </head>
 <body class="pagina-erro">
 <main class="erro">
-  <img src="assets/img/maritaca-720.webp" width="720" height="900" alt="Ilustração de uma maritaca pousada num galho.">
+  <img src="assets/img/ave.webp" width="148" height="148" alt="Desenho da maritaca do logotipo da MaritaKafé.">
   <div>
-    <h1>Essa página voou</h1>
-    <p>O endereço que você abriu não existe aqui. O cardápio, o jardim e o caminho até o café estão na página inicial.</p>
+    <h1>A maritaca voou com essa página</h1>
+    <p>O endereço que você abriu não existe aqui. O cardápio, os eventos e o caminho até a casa estão na página inicial.</p>
     <a class="botao botao--principal" href="./">Voltar para o início</a>
   </div>
 </main>
@@ -154,16 +163,16 @@ gravar(
   'politica-de-privacidade.html',
   paginaSimples({
     arquivo: 'politica-de-privacidade.html',
-    titulo: 'Política de privacidade | Maritakafé',
-    descricao: 'Como o site do Maritakafé trata dados de quem visita.',
+    titulo: 'Política de privacidade | MaritaKafé',
+    descricao: 'Como o site da MaritaKafé trata dados de quem visita.',
     conteudo: `<h1>Política de privacidade</h1>
-<p>Este site é uma página de apresentação do Maritakafé. Ele não tem formulários, não pede cadastro e não usa cookies de publicidade ou de análise.</p>
+<p>Este site é uma página de apresentação da MaritaKafé. Ele não tem formulários, não pede cadastro e não usa cookies de publicidade ou de análise.</p>
 <h2>O que acontece quando você usa o site</h2>
-<p>A hospedagem (GitHub Pages) registra dados técnicos de acesso, como endereço IP e navegador, para segurança e funcionamento do serviço. O café não recebe nem guarda esses dados.</p>
+<p>A hospedagem (GitHub Pages) registra dados técnicos de acesso, como endereço IP e navegador, para segurança e funcionamento do serviço. A MaritaKafé não recebe nem guarda esses dados.</p>
 <p>O mapa do Google só é carregado se você clicar em “Mostrar mapa”. A partir daí, o Google pode usar cookies próprios, conforme a política de privacidade dele.</p>
-<p>Os botões de WhatsApp e Instagram abrem esses aplicativos. A conversa segue as regras de privacidade de cada um, e as mensagens que você enviar chegam ao café.</p>
+<p>Os botões de WhatsApp e Instagram abrem esses aplicativos. A conversa segue as regras de privacidade de cada um, e as mensagens que você enviar chegam à casa.</p>
 <h2>Seus direitos</h2>
-<p>Pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir informações sobre dados seus que o café tenha recebido por mensagem e pedir que sejam apagados. Faça o pedido pelo mesmo canal em que conversou com o café.</p>
+<p>Pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir informações sobre dados seus que a casa tenha recebido por mensagem e pedir que sejam apagados. Faça o pedido pelo mesmo canal em que conversou com a casa.</p>
 <p class="texto-corrido__data">Atualizada em outubro de 2026.</p>
 <p><a class="botao botao--principal" href="./">Voltar para o início</a></p>`,
   })

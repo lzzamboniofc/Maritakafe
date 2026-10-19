@@ -22,14 +22,11 @@ export function selo(item) {
     : '';
 }
 
-export function imagem(img, { tamanhos = '100vw', carregamento = 'lazy', classe = '', prioridade = false, rotuloIlustrativo = false } = {}) {
-  const maior = Math.max(...img.larguras);
-  const srcset = img.larguras.map((l) => `${img.arquivo}-${l}.webp ${l}w`).join(', ');
-  const [w, h] = img.proporcao.split('/').map((n) => Number(n.trim()));
-  const altura = Math.round((maior * h) / w);
-  const rotulo = rotuloIlustrativo && img.provisoria ? '<span class="selo-ilustrativo">Imagem ilustrativa</span>' : '';
-  return `<figure class="quadro ${classe}" style="--proporcao:${img.proporcao}">
-    <img src="${img.arquivo}-${maior}.webp" srcset="${srcset}" sizes="${tamanhos}" width="${maior}" height="${altura}" alt="${esc(img.alt)}" loading="${carregamento}" decoding="async"${prioridade ? ' fetchpriority="high"' : ''}>
+export function imagem(chave, { tamanhos = '100vw', carregamento = 'lazy', classe = '', prioridade = false } = {}) {
+  const img = typeof chave === 'string' ? config.imagens[chave] : chave;
+  const rotulo = img.provisoria && demonstracao ? '<span class="selo-ilustrativo">Imagem ilustrativa</span>' : '';
+  return `<figure class="quadro ${classe}" style="--proporcao:${img.largura} / ${img.altura}">
+    <img src="${img.arquivo}" width="${img.largura}" height="${img.altura}" sizes="${tamanhos}" alt="${esc(img.alt)}" loading="${carregamento}" decoding="async"${prioridade ? ' fetchpriority="high"' : ''}>
     ${rotulo}
   </figure>`;
 }
@@ -52,6 +49,10 @@ export function linkMapa() {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.contato.mapa.busca)}`;
 }
 
+export function linkEvento() {
+  return `https://wa.me/${config.contato.whatsapp.valor}?text=${encodeURIComponent(config.canal.mensagemEvento)}`;
+}
+
 export function linkRota() {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(config.contato.mapa.busca)}`;
 }
@@ -62,4 +63,4 @@ export const icone = {
   rota: '<svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>',
 };
 
-export const marca = `<svg class="marca-ave" aria-hidden="true" viewBox="0 0 64 64" width="34" height="34"><path d="M24 40c-3 8-6 14-11 20h4c5-5 8-11 10-19Z" fill="currentColor" opacity=".55"/><ellipse cx="29" cy="34" rx="12" ry="15" fill="currentColor"/><circle cx="34" cy="19" r="10" fill="currentColor"/><path d="M41 14c7 0 9 7 5 11-1-3-3-4-5-4Z" fill="var(--cor-bico-ave, #F3E7C9)"/><circle cx="36" cy="17" r="3" fill="var(--cor-olho-ave, #FBFAF4)"/><circle cx="36.5" cy="17" r="1.4" fill="#2B1E16"/></svg>`;
+export const marca = `<img class="marca-logo" src="${config.negocio.logotipo.arquivo}" width="164" height="164" alt="">`;

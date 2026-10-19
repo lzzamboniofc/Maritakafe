@@ -1,19 +1,16 @@
-/* Paleta provisória: verde da mata, verde-maritaca, vermelho da toalha.
-   Troque aqui quando o café enviar as cores oficiais. */
+/* Paleta tirada do logotipo (bege e marrom), do prato listrado (verde-sálvia)
+   e da parede de azulejos verdes que aparece nos vídeos. */
 :root {
-  --mata: #1E3B2C;
-  --sombra: #132A1F;
-  --musgo: #2F5A3F;
-  --maritaca: #7DB443;
-  --maritaca-viva: #93C657;
-  --broto: #B7D36B;
-  --luz: #EFF2E6;
-  --salvia: #E1E8D4;
-  --papel: #FBFAF4;
-  --grao: #2B1E16;
-  --grao-suave: #5B4A3E;
-  --bico: #C9412F;
-  --bico-escuro: #9E2E22;
+  --areia: #E9DFCB;
+  --papel: #F7F2E8;
+  --cacau: #3A2A1F;
+  --cacau-suave: #6B5646;
+  --canela: #9A6440;
+  --salvia: #7E9A72;
+  --salvia-clara: #DCE4D2;
+  --azulejo: #2F4A40;
+  --azulejo-escuro: #233830;
+  --morango: #B4402E;
 
   --fonte: 'Lora', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --margem: clamp(1.25rem, 5vw, 4.5rem);
@@ -51,8 +48,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--luz);
-  color: var(--grao);
+  background: var(--papel);
+  color: var(--cacau);
   font-family: var(--fonte);
   font-size: var(--t-corpo);
   line-height: 1.68;
@@ -80,7 +77,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 a { color: inherit; }
 
 :focus-visible {
-  outline: 3px solid var(--maritaca-viva);
+  outline: 3px solid var(--canela);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -98,8 +95,8 @@ a { color: inherit; }
   left: 1rem; top: -4rem;
   z-index: 100;
   padding: .7rem 1rem;
-  background: var(--papel);
-  color: var(--grao);
+  background: var(--cacau);
+  color: var(--papel);
   transition: top .2s;
 }
 .pular:focus { top: 1rem; }
@@ -109,7 +106,7 @@ a { color: inherit; }
   position: relative;
   aspect-ratio: var(--proporcao, auto);
   overflow: hidden;
-  background: var(--musgo);
+  background: var(--areia);
 }
 .quadro img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -130,17 +127,20 @@ a { color: inherit; }
 .botao:active { transform: translateY(1px) scale(.98); }
 .botao svg { flex: none; }
 
-.botao--principal { background: var(--maritaca); color: var(--sombra); }
-.botao--principal:hover { background: var(--maritaca-viva); }
+.botao--principal { background: var(--azulejo); color: var(--papel); }
+.botao--principal:hover { background: var(--azulejo-escuro); }
 
-.botao--linha { border-color: rgba(239, 242, 230, .7); color: var(--luz); }
-.botao--linha:hover { background: rgba(239, 242, 230, .12); border-color: var(--luz); }
+.botao--linha { border-color: var(--cacau); color: var(--cacau); }
+.botao--linha:hover { background: var(--cacau); color: var(--papel); }
 
-.botao--linha-clara { border-color: rgba(239, 242, 230, .55); color: var(--luz); }
-.botao--linha-clara:hover { border-color: var(--luz); background: rgba(239, 242, 230, .08); }
+.botao--claro { background: var(--areia); color: var(--cacau); }
+.botao--claro:hover { background: var(--papel); }
 
-.botao--escuro { background: var(--mata); color: var(--luz); }
-.botao--escuro:hover { background: var(--musgo); }
+.botao--linha-clara { border-color: rgba(247, 242, 232, .55); color: var(--papel); }
+.botao--linha-clara:hover { border-color: var(--papel); background: rgba(247, 242, 232, .08); }
+
+.botao--escuro { background: var(--cacau); color: var(--papel); }
+.botao--escuro:hover { background: #2A1E16; }
 
 .link-sublinhado {
   text-decoration: underline;
@@ -156,7 +156,7 @@ a { color: inherit; }
   padding: .05em .55em;
   border: 1px dashed currentColor;
   border-radius: 3px;
-  color: var(--bico);
+  color: var(--morango);
   font-size: .72rem;
   font-style: normal;
   font-weight: 600;
@@ -170,8 +170,8 @@ a { color: inherit; }
   position: absolute;
   left: .6rem; bottom: .6rem;
   padding: .15rem .5rem;
-  background: rgba(19, 42, 31, .78);
-  color: var(--luz);
+  background: rgba(58, 42, 31, .78);
+  color: var(--papel);
   font-size: .72rem;
   border-radius: 3px;
   pointer-events: none;

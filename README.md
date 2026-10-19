@@ -1,6 +1,6 @@
-# Maritakafé — site
+# MaritaKafé — site
 
-Site do Maritakafé (Joaquim Egídio, Campinas – SP). HTML estático gerado com Node.js, sem dependências, publicado pelo GitHub Pages a partir da branch `main`, pasta raiz.
+Site da MaritaKafé, cafeteria em Itu (SP). HTML estático gerado com Node.js, sem dependências, publicado pelo GitHub Pages a partir da branch `main`, pasta raiz.
 
 ## Como editar
 
@@ -16,21 +16,22 @@ Requer Node.js 18 ou mais recente. Não há pacotes para instalar.
 
 Em `src/config.mjs`, `modo` aceita:
 
-- `'demonstracao'`: mostra itens não confirmados com o selo “A confirmar” e as ilustrações provisórias (inclusive na galeria, com o selo “Imagem ilustrativa”). A página leva `noindex`.
-- `'publico'`: esconde tudo o que não foi confirmado e as seções sem conteúdo real. A galeria só aparece com fotos reais. Se o WhatsApp não estiver confirmado, os botões passam a abrir o Direct do Instagram.
+- `'demonstracao'`: mostra itens não confirmados com o selo “A confirmar”. A página leva `noindex`.
+- `'publico'`: esconde tudo o que não foi confirmado e as seções sem conteúdo real.
+
+Eventos com data (`eventos` no config) somem sozinhos depois do dia, tanto no build quanto no navegador.
 
 O menu se ajusta às seções que ficaram visíveis.
 
-## Trocar as imagens provisórias
+## Trocar as fotos
 
-As imagens atuais são ilustrações feitas para o projeto (fontes em `src/ilustracoes`, geradas por `npm run ilustracoes`). Para trocar por fotos reais:
+As fotos atuais são recortes do print do Instagram, em baixa resolução. Para trocar:
 
-1. Exporte a foto em WebP nas larguras listadas em `larguras` (ex.: `jardim-720.webp`, `jardim-1200.webp`, `jardim-2400.webp`) e salve em `assets/img/`. Pode ser outro nome; basta ajustar `arquivo`.
-2. Ajuste `proporcao` se o enquadramento for diferente.
-3. Marque `provisoria: false`, preencha `alt` e `fonte`.
-4. Para a galeria, adicione objetos ao array `galeria`.
+1. Exporte a foto original em WebP (1200 px de largura é suficiente) e salve em `assets/img/`.
+2. Em `imagens`, no `src/config.mjs`, ajuste `arquivo`, `largura`, `altura`, `alt` e `fonte`.
+3. Para mostrar a galeria “Do nosso Instagram”, coloque as chaves das novas fotos em `galeria`.
 
-Fotos de banco de imagem precisam de licença comercial e devem ser registradas em `CREDITOS-IMAGENS.md`.
+Fotos de banco de imagem precisam de licença comercial, ficam com `provisoria: true` e devem ser registradas em `CREDITOS-IMAGENS.md`.
 
 ## Estrutura
 
@@ -39,7 +40,7 @@ src/config.mjs          conteúdo e chaves de confirmação
 src/build.mjs           gera as páginas na raiz
 src/partials/           componentes (seções) e utilidades
 src/styles/             CSS (cores em variáveis no topo de base.css)
-src/scripts/site.js     menu, galeria ampliada, mapa sob demanda
+src/scripts/site.js     menu, galeria ampliada, eventos vencidos, mapa sob demanda
 scripts/pendencias.mjs  lista do que falta confirmar
 assets/                 arquivos publicados (css, js, fontes, imagens)
 ```

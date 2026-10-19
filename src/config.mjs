@@ -1,4 +1,4 @@
-// Configuração central do site do Maritakafé.
+// Configuração central do site da MaritaKafé.
 // Tudo o que aparece para o visitante sai daqui. Itens com `confirmado: false`
 // aparecem com o selo "A confirmar" no modo demonstração e somem no modo público.
 // Depois de editar, rode `npm run build` e `npm run pendencias`.
@@ -7,206 +7,151 @@ export const modo = 'demonstracao'; // 'demonstracao' | 'publico'
 
 export const site = {
   url: 'https://lzzamboniofc.github.io/Maritakafe/',
-  idioma: 'pt-BR',
-  titulo: 'Maritakafé | Café da manhã, brunch e almoço em Joaquim Egídio, Campinas',
+  titulo: 'MaritaKafé | Cafeteria em Itu com pão de queijo Waffle Canastra',
   descricao:
-    'Café da manhã, brunch e almoço no jardim, entre árvores antigas e bambus, na rua principal de Joaquim Egídio, em Campinas. Pode levar o pet.',
+    'Cafeteria em Itu com comida afetiva, gostosa e saudável. Pão de queijo Waffle Canastra, Combo Arara, oficinas e café sospeso. Rua Hélio Tomba, 100.',
   imagemCompartilhamento: 'assets/img/compartilhar.png',
   credito: null, // ex.: 'Site por Seu Nome'
 };
 
 export const negocio = {
-  nome: { valor: 'Maritakafé', confirmado: true, fonte: 'Informado pelo cliente (perfil @maritakafe)' },
+  nome: { valor: 'MaritaKafé', confirmado: true, fonte: 'Perfil @maritakafe' },
   segmento: 'Cafeteria',
-  bairro: 'Joaquim Egídio',
-  cidade: 'Campinas',
+  cidade: 'Itu',
   estado: 'SP',
+  bio: 'Cafeteria com comida afetiva, gostosa e saudável.',
   logotipo: {
-    valor: null,
-    confirmado: false,
-    observacao: 'Logotipo oficial não obtido. O site usa a marca nominativa em Lora como provisória.',
-  },
-  paleta: {
-    confirmado: false,
-    observacao: 'Cores provisórias tiradas da maritaca e do jardim. Ajustar com as cores do Instagram/logotipo.',
+    arquivo: 'assets/img/logo.webp',
+    confirmado: true,
+    observacao: 'Recortado do print do perfil (164 px). Pedir o arquivo original em alta (SVG ou PNG).',
   },
 };
 
 export const contato = {
   endereco: {
-    valor: 'R. Dr. Heitor Penteado, 1580 – Joaquim Egídio, Campinas – SP, 13108-002',
-    rua: 'R. Dr. Heitor Penteado, 1580',
-    bairro: 'Joaquim Egídio',
-    cep: '13108-002',
+    rua: 'Rua Hélio Tomba, 100',
     confirmado: true,
-    fonte: 'Cadastro do CNPJ na Receita Federal e guias de Campinas',
+    fonte: 'Perfil @maritakafe',
+  },
+  bairroCep: {
+    bairro: 'Itu Novo Centro',
+    cep: '13303-542',
+    confirmado: false,
+    fonte: 'Base pública de CEP para a Rua Hélio Tomba. Confirmar com a casa.',
   },
   whatsapp: {
-    valor: '5519991550038',
-    exibicao: '(19) 99155-0038',
-    confirmado: false,
-    fonte: 'Matéria "Os Melhores da Gastronomia" (2022) e listagens públicas. Confirmar se ainda é o número de atendimento.',
+    valor: '5511945257494',
+    exibicao: '(11) 94525-7494',
+    confirmado: true,
+    fonte: 'Linktree oficial (linktr.ee/maritakafe)',
   },
   instagram: {
     usuario: 'maritakafe',
     url: 'https://www.instagram.com/maritakafe/',
     direct: 'https://ig.me/m/maritakafe',
     confirmado: true,
-    fonte: 'Enviado pelo cliente',
   },
+  linktree: { url: 'https://linktr.ee/maritakafe', confirmado: true },
   email: { valor: null, confirmado: false },
-  mapa: {
-    busca: 'R. Dr. Heitor Penteado, 1580 - Joaquim Egídio, Campinas - SP, 13108-002',
-    confirmado: true,
-  },
+  mapa: { busca: 'MaritaKafé, Rua Hélio Tomba, 100, Itu - SP', confirmado: true },
 };
 
-// Canal principal de conversão. Enquanto o WhatsApp não for confirmado,
-// o modo público usa o Direct do Instagram automaticamente.
 export const canal = {
   preferido: 'whatsapp',
-  mensagemWhatsapp: 'Olá! Vi o site do Maritakafé e queria uma informação.',
+  mensagemWhatsapp: 'Oi! Vi o site da MaritaKafé e queria uma informação.',
+  mensagemEvento: 'Oii, quero fazer uma reserva para o meu evento aí na Maritakafé!',
 };
 
+// Os horários estão no destaque "Horario" do Instagram. Copie-os aqui e marque confirmado.
 export const horarios = {
   confirmado: false,
-  fonte: 'Guias on-line divergem entre si. Confirmar com o café antes de publicar.',
-  observacao: 'Horários vistos em guias on-line. Feriados podem mudar.',
+  fonte: 'Destaque "Horario" do Instagram (não lido).',
   dias: [
-    { dia: 'Segunda a quarta', horario: 'Fechado' },
-    { dia: 'Quinta e sexta', horario: '12h30 às 19h' },
-    { dia: 'Sábado e domingo', horario: '8h às 19h' },
+    // { dia: 'Terça a sexta', horario: '8h às 18h' },
   ],
 };
 
-export const historia = {
-  confirmado: false,
-  fonte: 'Matéria "Os Melhores da Gastronomia" (março de 2022). Confirmar nomes e datas com o café.',
-  paragrafos: [
-    'O Maritakafé abriu em frente à antiga sede da fazenda de café de Joaquim Egídio. A ideia de Liliana Barretto era simples: mesas no jardim, café da manhã sem pressa e espaço para quem chega com o cachorro.',
-    'Desde 2020 a cozinha está com o chef Pedro Patrone Barretto, sobrinho de Liliana, que frequenta o café desde criança. Vieram pratos novos e outros métodos de preparo de café, e o jardim continuou do mesmo jeito.',
-  ],
-  textoNeutro: [
-    'O Maritakafé fica na rua principal de Joaquim Egídio, com mesas espalhadas pelo jardim e sombra das árvores e dos bambus.',
-  ],
-};
-
-// Itens citados por clientes e pela imprensa. O cardápio muda com a estação;
-// confirme o que está valendo antes de marcar `confirmado: true`.
-// Preço só aparece quando `preco` estiver preenchido e confirmado.
+// O cardápio completo está no destaque "Cardápio" do Instagram.
+// Preço só aparece quando `preco` estiver preenchido e o item confirmado.
 export const cardapio = [
   {
-    grupo: 'Para começar o dia',
-    itens: [
-      { nome: 'Ciabatta com ovos mexidos e bacon', descricao: null, preco: null, confirmado: false },
-      { nome: 'Pão de milho com queijo', descricao: 'Queijo quente no pão de milho.', preco: null, confirmado: false },
-      { nome: 'Croissant com brie e geleia de figo', descricao: null, preco: null, confirmado: false },
-      { nome: 'Pão de queijo', descricao: null, preco: null, confirmado: false },
-    ],
+    nome: 'Pão de queijo Waffle Canastra',
+    descricao: 'O pão de queijo que a casa diz ser o único de Itu.',
+    preco: null,
+    confirmado: true,
+    fonte: 'Bio do Instagram',
+    destaque: true,
   },
   {
-    grupo: 'Doces da casa',
-    itens: [
-      { nome: 'Chocotaka', descricao: 'Brownie com calda de chocolate quente e sorvete de creme.', preco: null, confirmado: false, destaque: true },
-      { nome: 'Torta de pera', descricao: 'Servida com calda de amora e sorvete.', preco: null, confirmado: false },
-      { nome: 'Queijada', descricao: null, preco: null, confirmado: false },
-    ],
+    nome: 'Combo Arara',
+    descricao: 'Waffle, ovos mexidos, taça de frutas e café com leite.',
+    preco: null,
+    confirmado: false,
+    fonte: 'Post "O que vem no Combo Arara?". Composição deduzida da foto.',
+    imagem: 'comboArara',
   },
   {
-    grupo: 'Sucos e bebidas',
-    itens: [
-      { nome: 'Limão-cravo', descricao: null, preco: null, confirmado: false },
-      { nome: 'Morango com manjericão', descricao: null, preco: null, confirmado: false },
-      { nome: 'Açaí com laranja', descricao: null, preco: null, confirmado: false },
-      { nome: 'Suco verde', descricao: 'Couve, hortelã e laranja.', preco: null, confirmado: false },
-      { nome: 'Cappuccino', descricao: null, preco: null, confirmado: false },
-      { nome: 'Chocolate quente', descricao: null, preco: null, confirmado: false },
-    ],
+    nome: 'Torrada com morangos',
+    descricao: 'Pão tostado coberto de morango picado.',
+    preco: null,
+    confirmado: false,
+    fonte: 'Foto do Instagram. Confirmar o nome do prato.',
+    imagem: 'tosta',
   },
 ];
 
 export const cardapioCompleto = {
-  url: null, // link do cardápio oficial (PDF, Goomer, etc.), quando houver
-  confirmado: false,
+  url: 'https://www.instagram.com/maritakafe/',
+  rotulo: 'Ver o cardápio no Instagram',
+  observacao: 'O cardápio completo fica no destaque “Cardápio” do perfil.',
+  confirmado: true,
 };
 
-export const jardim = {
-  titulo: 'Debaixo das árvores, com visita das maritacas',
-  blocos: [
-    {
-      texto: 'As mesas de madeira ficam no jardim, entre árvores antigas e bambus. Tem parte coberta para os dias de chuva.',
-      confirmado: true,
-      fonte: 'Guia da Semana e avaliações públicas',
-    },
-    {
-      texto: 'Cachorro é bem-vindo. Muita gente vem com o pet e fica a manhã inteira.',
-      confirmado: true,
-      fonte: 'Avaliações públicas e imprensa',
-    },
-    {
-      texto: 'Maritacas, araras, esquilos e às vezes um macaquinho passam pelas árvores enquanto a mesa é servida. O nome da casa veio daí.',
-      confirmado: false,
-      fonte: 'Relatos de visitantes e imprensa. Confirmar a origem do nome.',
-    },
-  ],
-};
-
-// Todas as imagens do site. Troque `arquivo` pela foto real (mesmo nome em .webp)
-// e marque `provisoria: false`.
-export const imagens = {
-  hero: {
-    arquivo: 'assets/img/jardim',
-    larguras: [720, 1200, 2400],
-    proporcao: '3 / 2',
-    alt: 'Ilustração de uma mesa com toalha xadrez no jardim, entre árvores e bambus, com uma maritaca no galho.',
-    provisoria: true,
-    fonte: 'Ilustração própria do projeto (provisória)',
+// Eventos com data deixam de aparecer depois do dia (no build e no navegador).
+export const eventos = [
+  {
+    titulo: 'Oficina de bandtape',
+    detalhe: 'Segunda edição',
+    data: '2026-10-22',
+    dataExibicao: '22 de outubro',
+    descricao: 'Detalhes e inscrição no post fixado do Instagram.',
+    link: 'https://www.instagram.com/maritakafe/',
+    imagem: 'oficina',
+    confirmado: true,
   },
-  sobre: {
-    arquivo: 'assets/img/mesa',
-    larguras: [720, 1200],
-    proporcao: '4 / 5',
-    alt: 'Ilustração vista de cima: xícara de café, croissant e suco de laranja sobre toalha xadrez vermelha.',
-    provisoria: true,
-    fonte: 'Ilustração própria do projeto (provisória)',
-  },
-  chocotaka: {
-    arquivo: 'assets/img/chocotaka',
-    larguras: [720, 1200],
-    proporcao: '1 / 1',
-    alt: 'Ilustração de brownie com bola de sorvete de creme e calda de chocolate escorrendo.',
-    provisoria: true,
-    fonte: 'Ilustração própria do projeto (provisória)',
-  },
-  jardimMaritaca: {
-    arquivo: 'assets/img/maritaca',
-    larguras: [720, 1200],
-    proporcao: '4 / 5',
-    alt: 'Ilustração de uma maritaca verde pousada num galho entre folhas.',
-    provisoria: true,
-    fonte: 'Ilustração própria do projeto (provisória)',
-  },
-  jardimBambus: {
-    arquivo: 'assets/img/bambus',
-    larguras: [900, 1600],
-    proporcao: '16 / 11',
-    alt: 'Ilustração de um bambuzal com luz entrando pelo meio.',
-    provisoria: true,
-    fonte: 'Ilustração própria do projeto (provisória)',
-  },
-};
-
-// Galeria: só fotos reais no modo público.
-export const galeria = [
-  { arquivo: 'assets/img/jardim', larguras: [720, 1200], proporcao: '3 / 2', alt: 'Ilustração do jardim com mesa posta.', provisoria: true, fonte: 'Ilustração própria (provisória)' },
-  { arquivo: 'assets/img/paes', larguras: [720, 1200], proporcao: '1 / 1', alt: 'Ilustração de cesta com pães de queijo sobre toalha xadrez.', provisoria: true, fonte: 'Ilustração própria (provisória)' },
-  { arquivo: 'assets/img/sucos', larguras: [720, 1200], proporcao: '1 / 1', alt: 'Ilustração de três copos de suco: laranja, verde e vermelho.', provisoria: true, fonte: 'Ilustração própria (provisória)' },
-  { arquivo: 'assets/img/maritaca', larguras: [720, 1200], proporcao: '4 / 5', alt: 'Ilustração de maritaca no galho.', provisoria: true, fonte: 'Ilustração própria (provisória)' },
-  { arquivo: 'assets/img/chocotaka', larguras: [720, 1200], proporcao: '1 / 1', alt: 'Ilustração da Chocotaka.', provisoria: true, fonte: 'Ilustração própria (provisória)' },
-  { arquivo: 'assets/img/bambus', larguras: [900, 1600], proporcao: '16 / 11', alt: 'Ilustração do bambuzal.', provisoria: true, fonte: 'Ilustração própria (provisória)' },
 ];
 
-// Avaliações: só com texto, nome e nota exatamente como aparecem no Google.
+export const eventosPassados = {
+  texto: 'No 1º de outubro, Dia do Café, a casa resolveu comemorar o mês inteiro, do jeito italiano.',
+  imagem: 'diaDoCafe',
+  confirmado: true,
+};
+
+export const sospeso = {
+  titulo: 'Café sospeso',
+  texto: [
+    'O costume vem de Nápoles: quem pode paga um café a mais, e ele fica “suspenso” para alguém que chegar depois.',
+    'A MaritaKafé adotou a ideia. Pergunte no balcão como deixar o seu.',
+  ],
+  confirmado: false,
+  fonte: 'Vídeo "café sospenso" no Instagram. Confirmar como funciona na casa.',
+};
+
+// Imagens recortadas do print do perfil. Peça os originais em alta para trocar.
+const recorte = 'Instagram @maritakafe (recorte do print do perfil, baixa resolução)';
+export const imagens = {
+  tosta: { arquivo: 'assets/img/tosta-morangos.webp', largura: 352, altura: 386, alt: 'Duas torradas cobertas de morango picado num prato listrado de verde e branco.', provisoria: false, fonte: recorte },
+  comboArara: { arquivo: 'assets/img/combo-arara.webp', largura: 356, altura: 314, alt: 'Combo Arara: waffle, ovos mexidos, taça de frutas e café com leite.', provisoria: false, fonte: recorte },
+  diaDoCafe: { arquivo: 'assets/img/dia-do-cafe.webp', largura: 356, altura: 285, alt: 'Cappuccino na xícara com o logotipo da MaritaKafé, grãos de café e o cartão “Não faço questão, faço cafés”.', provisoria: false, fonte: recorte },
+  equipe: { arquivo: 'assets/img/equipe.webp', largura: 355, altura: 319, alt: 'Duas pessoas da MaritaKafé sorrindo com bebidas geladas, uma de avental com o logotipo da casa.', provisoria: false, fonte: recorte },
+  sospeso: { arquivo: 'assets/img/cafe-sospeso.webp', largura: 355, altura: 246, alt: 'Mulher falando sobre o café sospeso, com parede de azulejos verdes ao fundo.', provisoria: false, fonte: recorte },
+  oficina: { arquivo: 'assets/img/oficina-bandtape.webp', largura: 355, altura: 282, alt: 'Duas mulheres sorrindo com xícaras decoradas na oficina de bandtape.', provisoria: false, fonte: recorte },
+};
+
+// Galeria "Do nosso Instagram". Fica oculta enquanto só houver as fotos já usadas nas outras seções.
+// Adicione novas chaves de `imagens` aqui quando a casa enviar mais fotos.
+export const galeria = [];
+
 export const avaliacoes = {
   fonteUrl: null,
   itens: [
@@ -216,39 +161,34 @@ export const avaliacoes = {
 
 export const perguntas = [
   {
-    pergunta: 'Posso levar meu cachorro?',
-    resposta: 'Pode. O jardim recebe pets, e muita gente vem acompanhada.',
+    pergunta: 'Dá para reservar a casa para um evento?',
+    resposta: 'Dá. A reserva é feita pelo WhatsApp.',
+    acao: 'evento',
     confirmado: true,
   },
   {
-    pergunta: 'Em que dias o café abre?',
-    resposta: 'Os horários atualizados estão na seção Visite. Em feriados, vale confirmar antes pelo canal de atendimento.',
+    pergunta: 'Que horas a MaritaKafé abre?',
+    resposta: 'Os horários estão no destaque “Horario” do Instagram.',
+    confirmado: true,
+  },
+  {
+    pergunta: 'O que é o pão de queijo Waffle Canastra?',
+    resposta: 'É pão de queijo assado na máquina de waffle, feito com queijo canastra.',
     confirmado: false,
   },
   {
-    pergunta: 'Precisa reservar mesa?',
-    resposta: null,
-    confirmado: false,
+    pergunta: 'Tem opções saudáveis?',
+    resposta: 'A proposta da casa é comida afetiva, gostosa e saudável. Pergunte pelas opções do dia.',
+    confirmado: true,
   },
-  {
-    pergunta: 'Tem opção de almoço?',
-    resposta: 'Além do café da manhã e do brunch, a casa serve almoço. Pergunte qual é o prato do dia.',
-    confirmado: false,
-  },
-  {
-    pergunta: 'Dá para fazer evento ou casamento no jardim?',
-    resposta: null,
-    confirmado: false,
-  },
-  {
-    pergunta: 'Quais formas de pagamento são aceitas?',
-    resposta: null,
-    confirmado: false,
-  },
+  { pergunta: 'Quais formas de pagamento são aceitas?', resposta: null, confirmado: false },
+  { pergunta: 'Tem estacionamento?', resposta: null, confirmado: false },
 ];
 
 export const pendenciasExtras = [
-  'Unidade em Itu: um cadastro público cita endereço na Praça da Independência, 31 (Centro, Itu). Confirmar se existe outra unidade e se deve aparecer no site.',
-  'Arroba do Instagram: uma matéria de 2022 cita @cafemaritaka; o cliente enviou @maritakafe. Confirmar o perfil atual.',
-  'Política de privacidade: confirmar o responsável e um e-mail de contato para solicitações de dados.',
+  'Fotos: as atuais são recortes do print do Instagram (cerca de 350 px). Pedir os originais em alta.',
+  'Logotipo em alta resolução (SVG ou PNG transparente).',
+  'Nome e papel das pessoas que aparecem nas fotos, caso a casa queira uma seção de equipe.',
+  'A história do nome (post "Por que Maritakafé?") para a seção A casa.',
+  'Política de privacidade: confirmar um e-mail ou canal para pedidos sobre dados.',
 ];
